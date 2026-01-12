@@ -115,7 +115,7 @@ class SteganographyEngine:
     """Main class untuk load dan gunakan model PyTorch"""
     
     def __init__(self):
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = torch.device("cpu")
         self.encoder = None
         self.decoder = None
         self.models_loaded = False
@@ -440,4 +440,5 @@ def reveal_encrypted_data(stego_image_data: bytes) -> bytes:
         raise RuntimeError("❌ Steganography engine tidak tersedia")
     
     engine = st.session_state.stego_engine
+
     return engine.reveal_encrypted_data(stego_image_data)
